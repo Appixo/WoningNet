@@ -1,1 +1,572 @@
-{ "checkedAt": null, "projects": {} }
+{
+  "checkedAt": "2026-09-05T10:35:06.278Z",
+  "projects": {
+    "01KNV6FDTVAE6ZEETMCA33AKY2": {
+      "name": "Hof van Clarenborg - Fase 2",
+      "place": "Nieuwer Ter Aa",
+      "status": "In verkoop",
+      "minPrice": 275000,
+      "maxPrice": 410000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/stichtse-vecht/01KNV6FDTVAE6ZEETMCA33AKY2-hof-van-clarenborg-fase-2",
+      "detail": {
+        "lat": 52.18825247,
+        "lon": 4.98189452,
+        "minPrice": 275000,
+        "maxPrice": 410000,
+        "developer": "SamenThuis Vastgoedontwikkeling",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "06 mrt. 2026",
+          "startBouw": "Q4 2026",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01J2EASZV7M2KKAXYZYB9A1DDS": {
+      "name": "Hof van Clarenborg - Fase 1",
+      "place": "Nieuwer Ter Aa",
+      "status": "In verkoop",
+      "minPrice": 1125000,
+      "maxPrice": 1135000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/stichtse-vecht/01J2EASZV7M2KKAXYZYB9A1DDS-hof-van-clarenborg-fase-1",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01JC0R3GZNKS9M6SC5W2KZWBVE": {
+      "name": "Neptunus",
+      "place": "Maarssen",
+      "status": "In verkoop",
+      "minPrice": 308030,
+      "maxPrice": 650000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/stichtse-vecht/01JC0R3GZNKS9M6SC5W2KZWBVE-neptunus",
+      "detail": {
+        "lat": 52.12532818,
+        "lon": 5.03674086,
+        "minPrice": 308030,
+        "maxPrice": 650000,
+        "developer": "Beumer",
+        "dates": {
+          "voorverkoop": "01 nov. 2024",
+          "startVerkoop": "31 dec. 2024",
+          "startBouw": "28 mei 2023",
+          "oplevering": "Q1 2027"
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01JZ2HPYNTPRVRMXYACJK57S13": {
+      "name": "Ensemble Maarssen",
+      "place": "Maarssen",
+      "status": "Verkocht",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/stichtse-vecht/01JZ2HPYNTPRVRMXYACJK57S13-ensemble-maarssen",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KWH4AY3MWF8CK20TF7TDAZQ3": {
+      "name": "Cix Merwede fase 3",
+      "place": "Utrecht",
+      "status": "Bouw gestart",
+      "minPrice": 369000,
+      "maxPrice": 785000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KWH4AY3MWF8CK20TF7TDAZQ3-cix-merwede-fase-3",
+      "detail": {
+        "lat": 52.07257654,
+        "lon": 5.10860181,
+        "minPrice": 369000,
+        "maxPrice": 785000,
+        "developer": "Blink",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "16 okt. 2025",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KH8Q8J7SGNRFGYMZY0PBD244": {
+      "name": "Cix Merwede fase 2",
+      "place": "Utrecht",
+      "status": "Bouw gestart",
+      "minPrice": 515000,
+      "maxPrice": 770000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KH8Q8J7SGNRFGYMZY0PBD244-cix-merwede-fase-2",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KXHC0Q45EXR8RGEQPE4MTN6T": {
+      "name": "Loma Linda",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 399000,
+      "maxPrice": 949000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KXHC0Q45EXR8RGEQPE4MTN6T-loma-linda",
+      "detail": {
+        "lat": 52.10076837,
+        "lon": 5.09246147,
+        "minPrice": 399000,
+        "maxPrice": 949000,
+        "developer": "Ballast Nedam Ontwikkelingsmaatschappij",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KCKVE8CSBX120PYS561J6M60": {
+      "name": "Grow Merwede",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 425000,
+      "maxPrice": 1150000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KCKVE8CSBX120PYS561J6M60-grow-merwede",
+      "detail": {
+        "lat": 52.0727,
+        "lon": 5.1083,
+        "minPrice": 425000,
+        "maxPrice": 1150000,
+        "developer": "Synchroon",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KNKDJAT4JV1DJHBJN6HCFDAG": {
+      "name": "Leeuwepoort - Herenhuizen en stadswoningen",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 596000,
+      "maxPrice": 975000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KNKDJAT4JV1DJHBJN6HCFDAG-leeuwepoort-herenhuizen-en-stadswoningen",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KNPRHWBA4KEPCK2TTMRZHN8T": {
+      "name": "Bellevue Fase 3 en 4",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 265000,
+      "maxPrice": 1530000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KNPRHWBA4KEPCK2TTMRZHN8T-bellevue-fase-3-en-4",
+      "detail": {
+        "lat": 52.0889,
+        "lon": 5.1156,
+        "minPrice": 265000,
+        "maxPrice": 1530000,
+        "developer": "Heijmans Vastgoed",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KNPRE6QG6G28BX49BNKWFK0N": {
+      "name": "Bellevue Fase 2",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 470250,
+      "maxPrice": 852000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KNPRE6QG6G28BX49BNKWFK0N-bellevue-fase-2",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KNPR8JZTNM2SJTA0T31NTZ7H": {
+      "name": "Bellevue Fase 1",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 680000,
+      "maxPrice": 928000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KNPR8JZTNM2SJTA0T31NTZ7H-bellevue-fase-1",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HFP7Z0MAEFV10NRSCKJ6JM8T": {
+      "name": "Leeuwepoort",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HFP7Z0MAEFV10NRSCKJ6JM8T-leeuwepoort",
+      "detail": {
+        "lat": 52.0927045,
+        "lon": 5.0744524,
+        "minPrice": null,
+        "maxPrice": null,
+        "developer": "AM",
+        "dates": {
+          "voorverkoop": "31 dec. 2025",
+          "startVerkoop": "31 mrt. 2026",
+          "startBouw": "Q3 2026",
+          "oplevering": "Q1 2028"
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01K9VNHNADKZV8S4AJ2YF69ZDW": {
+      "name": "Leeuwepoort - Appartementen",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 415000,
+      "maxPrice": 498200,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01K9VNHNADKZV8S4AJ2YF69ZDW-leeuwepoort-appartementen",
+      "detail": {
+        "lat": 52.09276012,
+        "lon": 5.07441354,
+        "minPrice": 415000,
+        "maxPrice": 498200,
+        "developer": "AM",
+        "dates": {
+          "voorverkoop": "30 sep. 2025",
+          "startVerkoop": "05 mrt. 2026",
+          "startBouw": "Q3 2026",
+          "oplevering": "Q2 2028"
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KH94X9Q1TVW67VQ3KAQX8A39": {
+      "name": "BRILJANT12",
+      "place": "Utrecht",
+      "status": "Aangekondigd",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KH94X9Q1TVW67VQ3KAQX8A39-briljant12",
+      "detail": {
+        "lat": 52.075277,
+        "lon": 5.122078,
+        "minPrice": null,
+        "maxPrice": null,
+        "developer": "VORM",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01KH94C0M9RXTTX5Y5A6WJVM2E": {
+      "name": "Wisselkwartier",
+      "place": "Utrecht",
+      "status": "onbekend",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01KH94C0M9RXTTX5Y5A6WJVM2E-wisselkwartier",
+      "detail": {
+        "lat": 52.09820645,
+        "lon": 5.09937823,
+        "minPrice": null,
+        "maxPrice": null,
+        "developer": "VORM",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01K749HWMCZD2R303R13N88K3W": {
+      "name": "Joy Merwede",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 430000,
+      "maxPrice": 995000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01K749HWMCZD2R303R13N88K3W-joy-merwede",
+      "detail": {
+        "lat": 52.0727,
+        "lon": 5.1083,
+        "minPrice": 430000,
+        "maxPrice": 995000,
+        "developer": "Synchroon",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01K7RR2EHS8DENT33KW3546VRD": {
+      "name": "Cix Merwede - fase 1",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 347500,
+      "maxPrice": 465000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01K7RR2EHS8DENT33KW3546VRD-cix-merwede-fase-1",
+      "detail": {
+        "lat": 52.07311182,
+        "lon": 5.10812467,
+        "minPrice": 347500,
+        "maxPrice": 465000,
+        "developer": "Blink",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "31 dec. 2025",
+          "startBouw": "16 okt. 2025",
+          "oplevering": "Q4 2028"
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01K8TCEDFWHB6VA2AFJZR3GHKH": {
+      "name": "Bloom Park fase 2",
+      "place": "Utrecht",
+      "status": "Bouw gestart",
+      "minPrice": 390000,
+      "maxPrice": 1215000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01K8TCEDFWHB6VA2AFJZR3GHKH-bloom-park-fase-2",
+      "detail": {
+        "lat": 52.07417861,
+        "lon": 5.108012,
+        "minPrice": 390000,
+        "maxPrice": 1215000,
+        "developer": "G & S Vastgoed B.V.",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "30 okt. 2025",
+          "startBouw": "23 mrt. 2025",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01K249CCT2BEMG0WD2MSJGV43C": {
+      "name": "Nosara",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 707000,
+      "maxPrice": 1129000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01K249CCT2BEMG0WD2MSJGV43C-nosara",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01JZW1YYQWYE5Q34DMB7RWVSYM": {
+      "name": "Bloom Park - fase 1",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 427500,
+      "maxPrice": 1185000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01JZW1YYQWYE5Q34DMB7RWVSYM-bloom-park-fase-1",
+      "detail": {
+        "lat": 52.07290929,
+        "lon": 5.10954385,
+        "minPrice": 427500,
+        "maxPrice": 1185000,
+        "developer": "G & S Vastgoed B.V.",
+        "dates": {
+          "voorverkoop": "07 jul. 2025",
+          "startVerkoop": "17 jul. 2025",
+          "startBouw": "03 mrt. 2025",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01JSEBKJD9Z09MDNYJB82802TF": {
+      "name": "Wildgroei",
+      "place": "Utrecht",
+      "status": "Aangekondigd",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01JSEBKJD9Z09MDNYJB82802TF-wildgroei",
+      "detail": {
+        "lat": 52.1219074,
+        "lon": 5.01974498,
+        "minPrice": null,
+        "maxPrice": null,
+        "developer": "Blink",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HSV4AA1YG26Z0VN60JANS4NA": {
+      "name": "Wonderwoods",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 1850000,
+      "maxPrice": 3000000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HSV4AA1YG26Z0VN60JANS4NA-wonderwoods",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HBTXF5T6660H2Q52B07EXM16": {
+      "name": "Costa - Stadswoningen",
+      "place": "Utrecht",
+      "status": "In verkoop",
+      "minPrice": 988000,
+      "maxPrice": 1275000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HBTXF5T6660H2Q52B07EXM16-costa-stadswoningen",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HDK1VA6H5S5VYJ9ENTVJXT7S": {
+      "name": "KloosterGaerde",
+      "place": "De Meern",
+      "status": "Voorverkoop",
+      "minPrice": 1675000,
+      "maxPrice": 1900000,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HDK1VA6H5S5VYJ9ENTVJXT7S-kloostergaerde",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01H963AM6DH512K151KN9VWQV4": {
+      "name": "Wolvenplein Levenslang Genieten",
+      "place": "Utrecht",
+      "status": "Aangekondigd",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01H963AM6DH512K151KN9VWQV4-wolvenplein-levenslang-genieten",
+      "detail": {
+        "lat": 52.09738397,
+        "lon": 5.12625989,
+        "minPrice": null,
+        "maxPrice": null,
+        "developer": "AM",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01J2EBQ906FBRGAECS4TA4W4DA": {
+      "name": "Circulus",
+      "place": "Utrecht",
+      "status": "Verkocht",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01J2EBQ906FBRGAECS4TA4W4DA-circulus",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01J9XY3ZMH4FF251TPG9PJY6QK": {
+      "name": "Utrecht, Stadsgeluk",
+      "place": "Utrecht",
+      "status": "Verkocht",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01J9XY3ZMH4FF251TPG9PJY6QK-utrecht-stadsgeluk",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HHMA13EX15F1ZXD74PEE8NAZ": {
+      "name": "Art Royale",
+      "place": "Utrecht",
+      "status": "Verkocht",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HHMA13EX15F1ZXD74PEE8NAZ-art-royale",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HE5FX3ATTZFWV3MC5MW74J3S": {
+      "name": "New Roots - Villa Apartments",
+      "place": "Utrecht",
+      "status": "Verkocht",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HE5FX3ATTZFWV3MC5MW74J3S-new-roots-villa-apartments",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HE2CED6WR60WZ0WHK7ZWH1SE": {
+      "name": "Utrecht Wisselspoor",
+      "place": "Utrecht",
+      "status": "Verkocht",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HE2CED6WR60WZ0WHK7ZWH1SE-utrecht-wisselspoor",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01HBTXF5WX9DWH0F236AC58GDW": {
+      "name": "Cobana & Coco - Appartementen",
+      "place": "Utrecht",
+      "status": "Verkocht",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/utrecht/01HBTXF5WX9DWH0F236AC58GDW-cobana-coco-appartementen",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    },
+    "01JD2FW7T8PK6MWTRQXCQ8GS65": {
+      "name": "Porseleinhaven",
+      "place": "Loosdrecht",
+      "status": "Aangekondigd",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/koop/wijdemeren/01JD2FW7T8PK6MWTRQXCQ8GS65-porseleinhaven",
+      "detail": {
+        "lat": 52.206473,
+        "lon": 5.077117,
+        "minPrice": null,
+        "maxPrice": null,
+        "developer": "Heijmans Vastgoed",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "",
+          "oplevering": ""
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:35:06.278Z",
+      "lastSeenAt": "2026-09-05T10:35:06.278Z"
+    }
+  }
+}
