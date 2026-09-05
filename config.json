@@ -1,0 +1,18 @@
+{
+  "cities": [],
+  "excludeCities": [],
+  "minRent": 0,
+  "maxRent": 933,
+  "minRooms": 2,
+  "minArea": 0,
+  "maxArea": null,
+  "types": [],
+  "excludeTypes": [],
+  "excludeLabels": ["Senioren"],
+  "targetGroups": [],
+  "includeSocialHousing": true,
+  "includeVrijeSector": false,
+  "onlyLoting": false,
+  "requireElevator": false,
+  "minEnergyLabel": null
+}

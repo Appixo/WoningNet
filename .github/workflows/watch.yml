@@ -1,0 +1,46 @@
+name: Watch woningaanbod
+
+on:
+  schedule:
+    # Every 10 minutes. GitHub queues cron jobs on a best-effort basis, so in
+    # practice expect a run every 10-20 minutes — plenty for a portal that
+    # publishes a handful of homes a day.
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Only report what would be sent'
+        type: boolean
+        default: false
+
+# The job commits data/seen.json, so two overlapping runs would race each other.
+concurrency:
+  group: watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check for new listings
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: node src/index.js ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Remember what we alerted on
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name  'woningnet-watcher'
+          git config user.email 'actions@github.com'
+          git add data/seen.json
+          git diff --cached --quiet || git commit -m "chore: update seen listings"
+          git push

@@ -1,0 +1,12 @@
+{
+  "name": "woningnet-watcher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --env-file-if-exists=.env src/index.js",
+    "dry-run": "node --env-file-if-exists=.env src/index.js --dry-run",
+    "seed": "node --env-file-if-exists=.env src/index.js --seed"
+  },
+  "engines": { "node": ">=20" }
+}
