@@ -37,6 +37,7 @@ export async function runHuur({ config, region, listings, storePath, webhookUrl,
       const tags = [
         listing.isLoting ? 'LOTING' : null,
         listing.isVrijeSector ? 'VRIJE SECTOR' : null,
+        listing.isNieuwbouw ? 'NIEUWBOUW' : null,
         listing.label || null,
       ].filter(Boolean).join(',');
       const isNew = listing.id in entries ? '' : '  <- would notify';

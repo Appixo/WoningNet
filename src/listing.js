@@ -67,6 +67,8 @@ export function normalize(raw) {
     isSocialHousing: raw.PublicatieModule === 'Sociale huur',
     isKoop,
     price,
+    // SoortBouw is "Nieuwbouw" or "Bestaande bouw"; clusters carry it too.
+    isNieuwbouw: /nieuwbouw/i.test(eenheid.SoortBouw || cluster.SoortBouw || ''),
 
     publishedAt: raw.PublicatieDatum,
     closesAt: raw.EinddatumTijd,

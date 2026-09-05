@@ -60,6 +60,7 @@ function huurTags(listing) {
   const tags = [];
   if (listing.isLoting) tags.push('LOTING');
   if (listing.isVrijeSector) tags.push('VRIJE SECTOR');
+  if (listing.isNieuwbouw) tags.push('NIEUWBOUW');
   if (listing.label) tags.push(listing.label.toUpperCase());
   return tags;
 }
