@@ -6,7 +6,11 @@
   "scripts": {
     "check": "node --env-file-if-exists=.env src/index.js",
     "dry-run": "node --env-file-if-exists=.env src/index.js --dry-run",
+    "dry-run:huur": "node --env-file-if-exists=.env src/index.js --dry-run --only=huur",
+    "dry-run:koop": "node --env-file-if-exists=.env src/index.js --dry-run --only=koop",
     "seed": "node --env-file-if-exists=.env src/index.js --seed"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }

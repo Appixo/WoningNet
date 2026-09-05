@@ -14,5 +14,33 @@
   "includeVrijeSector": false,
   "onlyLoting": false,
   "requireElevator": false,
-  "minEnergyLabel": null
+  "minEnergyLabel": null,
+
+  "koop": {
+    "enabled": true,
+    "intervalMinutes": 60,
+    "municipalities": ["stichtse-vecht", "utrecht", "wijdemeren"],
+    "maxPrice": 450000,
+    "minPrice": 0,
+    "excludeTypes": ["Vrije kavel", "Kavel"],
+    "excludeStatuses": ["Verkocht", "Uitverkocht", "Opgeleverd"],
+    "places": [],
+    "area": [
+      [52.235, 4.990],
+      [52.235, 5.060],
+      [52.225, 5.105],
+      [52.205, 5.160],
+      [52.185, 5.165],
+      [52.160, 5.130],
+      [52.135, 5.100],
+      [52.110, 5.090],
+      [52.085, 5.085],
+      [52.068, 5.050],
+      [52.075, 4.990],
+      [52.100, 4.995],
+      [52.125, 5.005],
+      [52.160, 4.995],
+      [52.200, 4.985]
+    ]
+  }
 }

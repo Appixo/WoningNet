@@ -26,6 +26,16 @@ export function normalize(raw) {
   const isLoting = raw.PublicatieModel === 'Lotingmodel';
   const isVrijeSector = raw.PublicatieModule === 'Vrije sector';
 
+  // DAK has a Koop tab (corporations selling homes, occasionally below market).
+  // It is empty in regio Utrecht most of the time, so the exact module name has
+  // never been observed; match anything that says koop and route it to the koop
+  // channel instead of letting it leak into the huur alerts with a rent of 0.
+  const isKoop = /koop/i.test(
+    `${raw.PublicatieModule} ${raw.PublicatieModel} ${eenheid.Bestemming ?? ''}`,
+  );
+  const cluster = raw.Cluster ?? {};
+  const price = cluster.PrijsMinBekend ? num(cluster.PrijsMin) : null;
+
   return {
     id: raw.Id,
     url: DETAIL_URL + raw.Id,
@@ -55,6 +65,8 @@ export function normalize(raw) {
     isLoting,
     isVrijeSector,
     isSocialHousing: raw.PublicatieModule === 'Sociale huur',
+    isKoop,
+    price,
 
     publishedAt: raw.PublicatieDatum,
     closesAt: raw.EinddatumTijd,

@@ -13,6 +13,10 @@ const includesAny = (haystack, needle) => haystack.some((h) => eq(h, needle));
 export function matches(listing, config) {
   const reject = (reason) => ({ matched: false, reason });
 
+  if (listing.isKoop) {
+    return reject('koopwoning (handled by the koop channel)');
+  }
+
   if (config.cities?.length && !includesAny(config.cities, listing.city)) {
     return reject(`city ${listing.city} not in cities`);
   }
