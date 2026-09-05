@@ -93,27 +93,30 @@ export async function notifyHuur(webhookUrl, listings) {
 
 // ---------------------------------------------------------------- koop ----
 
+const OPEN_STATUS = /verkoop|verhuur|inschrijv|beschikbaar/i;
+
 function koopColor(event) {
-  if (event.item.source === 'DĀK') return 0x00b8d9;          // teal — corporation selling
-  if (event.kind === 'sale-start') return 0xeb5757;          // red — the sale just opened, act now
-  if (/verkoop|inschrijv/i.test(event.item.status)) return 0x27ae60; // green — in sale
-  return 0xf2c94c;                                           // yellow — announced, sign up for updates
+  if (event.item.source === 'DĀK') return 0x00b8d9;     // teal — corporation selling
+  if (event.kind === 'sale-start') return 0xeb5757;     // red — just opened, act now
+  if (OPEN_STATUS.test(event.item.status)) return 0x27ae60; // green — open
+  return 0xf2c94c;                                      // yellow — announced, register interest
 }
 
-function koopEmbed(event) {
+function koopEmbed(event, kind) {
   const { item } = event;
   const detail = item.detail ?? {};
   const dates = detail.dates ?? {};
+  const isHuur = kind === 'huur';
 
   const headline =
     event.kind === 'sale-start'
-      ? `🔔 **Verkoop gestart** (was: ${event.from})`
+      ? `🔔 **${isHuur ? 'Verhuur' : 'Verkoop'} gestart** (was: ${event.from})`
       : item.source === 'DĀK'
         ? '🏷️ Koopwoning via DĀK'
-        : `🆕 Nieuw project · ${item.status}`;
+        : `🆕 Nieuw ${isHuur ? 'huurproject' : 'project'} · ${item.status}`;
 
   const fields = [
-    { name: 'Prijs', value: item.priceText || 'op aanvraag', inline: true },
+    { name: isHuur ? 'Huur' : 'Prijs', value: item.priceText || 'op aanvraag', inline: true },
     { name: 'Woningen', value: item.availability || 'onbekend', inline: true },
     { name: 'Status', value: item.status, inline: true },
   ];
@@ -136,12 +139,18 @@ function koopEmbed(event) {
   };
 }
 
-export async function notifyKoop(webhookUrl, events) {
+export async function notifyProjects(webhookUrl, events, kind = 'koop') {
   if (!events.length) return;
   const n = events.length;
   const started = events.filter((e) => e.kind === 'sale-start').length;
-  const header = started
-    ? `🏗️ **${started} project${started === 1 ? '' : 'en'} in verkoop gegaan** — inschrijven kan nu`
-    : `🏗️ **${n} nieuwe koopkans${n === 1 ? '' : 'en'}** in jouw gebied`;
-  await send(webhookUrl, header, events.map(koopEmbed));
+  const plural = (count, one, many) => `${count} ${count === 1 ? one : many}`;
+  const header =
+    kind === 'huur'
+      ? started
+        ? `🏗️ **${plural(started, 'nieuwbouw-huurproject', 'nieuwbouw-huurprojecten')} in verhuur gegaan** — inschrijven kan nu`
+        : `🏗️ **${plural(n, 'nieuw nieuwbouw-huurproject', 'nieuwe nieuwbouw-huurprojecten')}** in jouw gebied`
+      : started
+        ? `🏗️ **${plural(started, 'project', 'projecten')} in verkoop gegaan** — inschrijven kan nu`
+        : `🏗️ **${plural(n, 'nieuwe koopkans', 'nieuwe koopkansen')}** in jouw gebied`;
+  await send(webhookUrl, header, events.map((event) => koopEmbed(event, kind)));
 }

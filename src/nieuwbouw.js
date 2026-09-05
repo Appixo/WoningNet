@@ -49,7 +49,7 @@ const euros = (s) => [...s.matchAll(/€\s*([\d.]+)/g)].map((m) => Number(m[1].r
 
 const KNOWN_STATUS = /^(in verkoop|aangekondigd|verkocht|uitverkocht|bouw gestart|opgeleverd|voorverkoop|inschrijving[^<]*|binnenkort in verkoop|start verkoop[^<]*)$/i;
 
-export function parseListPage(html, municipality) {
+export function parseListPage(html, municipality, kind = 'koop') {
   const chunks = stripBlocks(html).split(/data-gtm-track="project-card"/).slice(1);
 
   return chunks
@@ -75,8 +75,9 @@ export function parseListPage(html, municipality) {
 
       return {
         id,
+        kind,
         source: 'nieuwbouw.nl',
-        url: url || `${ORIGIN}/aanbod/koop/${municipality}/${id}`,
+        url: url || `${ORIGIN}/aanbod/${kind}/${municipality}/${id}`,
         name,
         municipality,
         place,
@@ -85,8 +86,12 @@ export function parseListPage(html, municipality) {
         priceText,
         minPrice: prices[0] ?? null,
         maxPrice: prices[1] ?? prices[0] ?? null,
-        // Announced projects carry no badge at all, only "N verwacht".
-        status: badges[0] || (/verwacht/.test(avail?.[0] ?? '') ? 'Aangekondigd' : 'onbekend'),
+        // Announced projects carry no badge at all, only "N verwacht"; some
+        // active ones (mostly huur) carry none either, only "N van M beschikbaar".
+        status:
+          badges[0] ||
+          (/verwacht/.test(avail?.[0] ?? '') ? 'Aangekondigd' : '') ||
+          (/beschikbaar/.test(avail?.[0] ?? '') ? 'Beschikbaar' : 'onbekend'),
         badges,
         availability: avail ? decode(avail[0]) : '',
         available: avail ? Number(avail[1] ?? avail[3]) : null,
@@ -136,14 +141,17 @@ export function parseDetailPage(html) {
   };
 }
 
-/** All koop projects listed for the given gemeente slugs, de-duplicated by id. */
-export async function fetchProjects(municipalities) {
+/**
+ * All projects listed for the given gemeente slugs, de-duplicated by id.
+ * kind is 'koop' or 'huur' — the site keeps them on separate list pages.
+ */
+export async function fetchProjects(municipalities, kind = 'koop') {
   const seen = new Map();
 
   for (const slug of municipalities) {
     for (let page = 1; page <= MAX_PAGES; page += 1) {
-      const url = `${ORIGIN}/aanbod/koop/${slug}${page > 1 ? `?page=${page}` : ''}`;
-      const cards = parseListPage(await getHtml(url), slug);
+      const url = `${ORIGIN}/aanbod/${kind}/${slug}${page > 1 ? `?page=${page}` : ''}`;
+      const cards = parseListPage(await getHtml(url), slug, kind);
       // A project can be rendered twice on one page (a highlighted card plus
       // the grid card); keep whichever variant carries the status badge.
       for (const card of cards) {

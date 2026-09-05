@@ -42,6 +42,6 @@ jobs:
         run: |
           git config user.name  'woningnet-watcher'
           git config user.email 'actions@github.com'
-          git add data/seen.json data/seen-koop.json
+          git add data/*.json
           git diff --cached --quiet || git commit -m "chore: update seen listings"
           git push

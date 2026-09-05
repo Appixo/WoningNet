@@ -16,6 +16,12 @@
   "requireElevator": false,
   "minEnergyLabel": null,
 
+  "nieuwbouwHuur": {
+    "enabled": true,
+    "maxRent": 1300,
+    "excludeTypes": []
+  },
+
   "koop": {
     "enabled": true,
     "intervalMinutes": 60,

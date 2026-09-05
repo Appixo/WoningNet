@@ -6,8 +6,9 @@
 //   node src/index.js --only=koop  run a single channel (huur or koop)
 //
 // Two independent channels:
-//   huur  DĀK regio Utrecht sociale huur / vrije sector  -> DISCORD_WEBHOOK_URL
-//   koop  nieuwbouw.nl projects + DĀK koop               -> DISCORD_WEBHOOK_URL_KOOP
+//   huur  DĀK regio Utrecht sociale huur / vrije sector,
+//         plus nieuwbouw.nl huurprojecten                 -> DISCORD_WEBHOOK_URL
+//   koop  nieuwbouw.nl koopprojecten + DĀK koop           -> DISCORD_WEBHOOK_URL_KOOP
 //
 // State lives in data/*.json, committed back by the GitHub Action. That is the
 // whole persistence layer: no database, no server, nothing to pay for.
@@ -19,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 import { fetchAanbod } from './dak.js';
 import { normalize } from './listing.js';
 import { runHuur } from './huur.js';
-import { runKoop } from './koop.js';
+import { runKoop, runProjects } from './koop.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -42,7 +43,7 @@ async function main() {
     console.error(`[huur] DĀK fetch failed: ${error.message}`);
   }
 
-  if (enabled('huur') && !failures.length) {
+  if (enabled('huur') && dak.region !== 'DĀK') {
     const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
     if (!webhookUrl && !dryRun && !seedOnly) {
       throw new Error('DISCORD_WEBHOOK_URL is not set — add it as a repository secret');
@@ -60,6 +61,29 @@ async function main() {
     } catch (error) {
       failures.push(`huur: ${error.message}`);
       console.error(`[huur] Failed: ${error.message}`);
+    }
+  }
+
+  // Nieuwbouw huurprojecten go to the huur channel. They do not depend on DĀK,
+  // so they run even when the DĀK fetch failed.
+  if (enabled('huur') && config.nieuwbouwHuur?.enabled !== false) {
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    if (webhookUrl || dryRun || seedOnly) {
+      try {
+        await runProjects({
+          kind: 'huur',
+          label: 'huur:nieuwbouw',
+          config: { ...config.koop, ...config.nieuwbouwHuur },
+          extraItems: [],
+          storePath: join(ROOT, 'data', 'seen-huur-projects.json'),
+          webhookUrl,
+          dryRun,
+          seedOnly,
+        });
+      } catch (error) {
+        failures.push(`huur:nieuwbouw: ${error.message}`);
+        console.error(`[huur:nieuwbouw] Failed: ${error.message}`);
+      }
     }
   }
 

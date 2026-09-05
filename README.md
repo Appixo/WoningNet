@@ -4,7 +4,8 @@ Two watchers in one repo, each with its own Discord channel:
 
 - **huur** — polls the public woningaanbod of [utrecht.mijndak.nl](https://utrecht.mijndak.nl/Woningaanbod)
   every ~10 minutes and posts new sociale-huur / vrije-sector listings that
-  match your criteria.
+  match your criteria. Also posts new nieuwbouw **huurprojecten** from
+  nieuwbouw.nl inside your area (hourly, same area and gemeenten as koop).
 - **koop** — polls [nieuwbouw.nl](https://nieuwbouw.nl) hourly for nieuwbouw
   projects inside an area you draw on the map and under a price ceiling, plus
   anything DĀK itself lists under Koop. Alerts when a project appears and again
@@ -112,6 +113,21 @@ up to €933 (the 2026 liberalisatiegrens), 2+ rooms, no senior-restricted homes
 **Note on `Jongeren` listings:** these usually cap at 23 or 28 and come with a
 `Jongerencontract` (temporary). At 28 you are on the boundary — the tool passes
 them through, but check the actual age limit on the listing itself.
+
+## Tuning `config.json` — nieuwbouw huurprojecten
+
+Everything under the `nieuwbouwHuur` key. It inherits `municipalities`, `area`,
+`intervalMinutes` and `excludeStatuses` from the `koop` block; set any of them
+here to override.
+
+| Key | Meaning |
+| --- | --- |
+| `enabled` | `false` switches nieuwbouw huurprojecten off; DĀK huur is unaffected. |
+| `maxRent` | Compared against the **cheapest** unit in a project, per month. Shipped: €1300, so middenhuur is included; nieuwbouw huur is almost never sociale huur. |
+| `excludeTypes` | Drops projects that consist only of these types. |
+
+Alerts land in the huur channel with a 🏗️ header, so they are easy to tell
+apart from DĀK listings. State lives in `data/seen-huur-projects.json`.
 
 ## Tuning `config.json` — koop
 
@@ -247,5 +263,6 @@ Actions tab.
 - If koop dry-runs start reporting 0 projects for a gemeente that clearly has
   some, nieuwbouw.nl changed its card markup; re-inspect `src/nieuwbouw.js`.
 - DĀK is polled about 144 times a day and nieuwbouw.nl about 24 times a day
-  (three or four pages each) — comparable to leaving the sites open in a browser
-  tab, and far below anything that would look abusive.
+  (six to eight pages each: koop and huur lists per gemeente) — comparable to
+  leaving the sites open in a browser tab, and far below anything that would
+  look abusive.

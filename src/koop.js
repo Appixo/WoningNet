@@ -1,23 +1,25 @@
-// The koop channel: nieuwbouw projects from nieuwbouw.nl, plus whatever DĀK
-// lists under Koop, filtered by price and by an area drawn on the map.
+// Nieuwbouw project channels: projects from nieuwbouw.nl (koop or huur), plus
+// whatever DĀK lists under Koop, filtered by price and by an area drawn on the
+// map.
 //
 // Alerts fire for a project the first time it shows up inside the filters, and
-// again when a tracked project moves into sale ("Aangekondigd" -> "In verkoop").
-// That second event is the one that matters: nieuwbouw is usually allocated by
-// inschrijving/loting in the first days after the sale opens.
+// again when a tracked project moves into sale or verhuur ("Aangekondigd" ->
+// "In verkoop"). That second event is the one that matters: nieuwbouw is
+// usually allocated by inschrijving/loting in the first days after it opens.
 //
-// State lives in data/seen-koop.json, separate from the huur store so the two
-// channels can be reset independently.
+// Each run keeps its own store (data/seen-koop.json, data/seen-huur-projects.json),
+// separate from the DĀK huur store, so any of them can be reset independently.
 
 import { fetchProjects, fetchProjectDetail } from './nieuwbouw.js';
 import { pointInPolygon } from './geo.js';
-import { notifyKoop } from './notify.js';
+import { notifyProjects } from './notify.js';
 import { readJson, writeJson } from './store.js';
 
 const DETAIL_CONCURRENCY = 4;
 const RETENTION_DAYS = 90;
 
-const SALE_STATUS = /verkoop|inschrijv/i; // "In verkoop", "Voorverkoop", "Inschrijving open"
+// "In verkoop", "Voorverkoop", "Inschrijving open", "Beschikbaar", "In verhuur"
+const OPEN_STATUS = /verkoop|verhuur|inschrijv|beschikbaar/i;
 const eq = (a, b) => String(a).trim().toLowerCase() === String(b).trim().toLowerCase();
 const includesAny = (haystack, needle) => haystack.some((h) => eq(h, needle));
 
@@ -28,6 +30,7 @@ const euro = (amount) =>
 export function fromDak(listing) {
   return {
     id: `dak-${listing.id}`,
+    kind: 'koop',
     source: 'DĀK',
     url: listing.url,
     name: listing.address,
@@ -48,17 +51,21 @@ export function fromDak(listing) {
   };
 }
 
+// Koop projects are capped by maxPrice, huur projects by maxRent (per month).
+const capFor = (kind, cfg) => (kind === 'huur' ? cfg.maxRent : cfg.maxPrice);
+
 /** @returns {{ matched: boolean, reason?: string }} */
 export function koopMatches(item, cfg) {
   const reject = (reason) => ({ matched: false, reason });
+  const cap = capFor(item.kind ?? 'koop', cfg);
 
   if (cfg.excludeStatuses?.length && includesAny(cfg.excludeStatuses, item.status)) {
     return reject(`status ${item.status}`);
   }
   // Compare against the cheapest unit: a project is interesting if *anything*
   // in it is affordable. Unknown prices ("op aanvraag") are kept, never hidden.
-  if (cfg.maxPrice != null && item.minPrice != null && item.minPrice > cfg.maxPrice) {
-    return reject(`cheapest unit ${euro(item.minPrice)} above maxPrice ${euro(cfg.maxPrice)}`);
+  if (cap != null && item.minPrice != null && item.minPrice > cap) {
+    return reject(`cheapest unit ${euro(item.minPrice)} above ${euro(cap)}`);
   }
   if (cfg.minPrice && item.maxPrice != null && item.maxPrice < cfg.minPrice) {
     return reject(`most expensive unit ${euro(item.maxPrice)} below minPrice`);
@@ -102,7 +109,12 @@ function describeEvent(event) {
   return `  ${price.padEnd(28)} | ${item.name} | ${where} | ${item.availability || '-'} | ${kind}`;
 }
 
-export async function runKoop({ config: cfg, dakKoop, storePath, webhookUrl, dryRun, seedOnly }) {
+/**
+ * One poll of nieuwbouw.nl for the given kind ('koop' or 'huur'), plus any
+ * extra items (DĀK koop) that should share the same filters and store.
+ */
+export async function runProjects({ kind, label, config: cfg, extraItems = [], storePath, webhookUrl, dryRun, seedOnly }) {
+  const tag = `[${label}]`;
   const { data: store, existed } = await readJson(storePath, { checkedAt: null, projects: {} });
   const projects = store.projects ?? {};
 
@@ -111,14 +123,17 @@ export async function runKoop({ config: cfg, dakKoop, storePath, webhookUrl, dry
   const intervalMinutes = cfg.intervalMinutes ?? 60;
   const sinceLast = store.checkedAt ? Date.now() - new Date(store.checkedAt).getTime() : Infinity;
   if (!dryRun && !seedOnly && sinceLast < intervalMinutes * 60 * 1000) {
-    console.log(`[koop] Checked ${Math.round(sinceLast / 60000)} min ago; polling every ${intervalMinutes} min. Skipping.`);
+    console.log(`${tag} Checked ${Math.round(sinceLast / 60000)} min ago; polling every ${intervalMinutes} min. Skipping.`);
     return;
   }
 
   const municipalities = cfg.municipalities ?? [];
-  const nieuwbouw = municipalities.length ? await fetchProjects(municipalities) : [];
-  const items = [...nieuwbouw, ...dakKoop.map(fromDak)];
-  console.log(`[koop] ${nieuwbouw.length} nieuwbouw projects in ${municipalities.join(', ')}; ${dakKoop.length} koop on DĀK`);
+  const nieuwbouw = municipalities.length ? await fetchProjects(municipalities, kind) : [];
+  const items = [...nieuwbouw, ...extraItems];
+  console.log(
+    `${tag} ${nieuwbouw.length} nieuwbouw ${kind}projecten in ${municipalities.join(', ')}` +
+      (extraItems.length ? `; ${extraItems.length} extra` : ''),
+  );
 
   const now = new Date().toISOString();
   for (const item of items) {
@@ -145,7 +160,7 @@ export async function runKoop({ config: cfg, dakKoop, storePath, webhookUrl, dry
       item.maxPrice ??= item.detail.maxPrice;
     } catch (error) {
       // Missing geo never hides a project; it just cannot be area-filtered.
-      console.warn(`[koop] Could not read detail page for ${item.name}: ${error.message}`);
+      console.warn(`${tag} Could not read detail page for ${item.name}: ${error.message}`);
     }
   });
 
@@ -161,7 +176,7 @@ export async function runKoop({ config: cfg, dakKoop, storePath, webhookUrl, dry
     if (verdict.matched) {
       if (!prev) {
         events.push({ kind: 'new', item });
-      } else if (!eq(prev.status, item.status) && SALE_STATUS.test(item.status) && !SALE_STATUS.test(prev.status)) {
+      } else if (!eq(prev.status, item.status) && OPEN_STATUS.test(item.status) && !OPEN_STATUS.test(prev.status)) {
         events.push({ kind: 'sale-start', from: prev.status, item });
       }
     }
@@ -186,15 +201,15 @@ export async function runKoop({ config: cfg, dakKoop, storePath, webhookUrl, dry
     if (!(id in nextProjects) && new Date(prev.lastSeenAt).getTime() > cutoff) nextProjects[id] = prev;
   }
 
-  console.log(`[koop] ${matched.length} match your koop config`);
+  console.log(`${tag} ${matched.length} match your config`);
 
   if (dryRun) {
-    console.log(`\n--- koop matches (${matched.length}) ---`);
+    console.log(`\n--- ${label} matches (${matched.length}) ---`);
     for (const { item } of matched) {
       const event = events.find((e) => e.item === item);
       console.log(describeEvent(event ?? { kind: 'known', item }) + (event ? '  <- would notify' : ''));
     }
-    console.log(`\n--- koop skipped (${skipped.length}) ---`);
+    console.log(`\n--- ${label} skipped (${skipped.length}) ---`);
     for (const { item, reason } of skipped) console.log(`  ${item.name} (${item.place}) — ${reason}`);
     return;
   }
@@ -204,18 +219,23 @@ export async function runKoop({ config: cfg, dakKoop, storePath, webhookUrl, dry
   if (seedOnly || !existed) {
     await writeJson(storePath, nextStore);
     console.log(
-      `[koop] Seeded ${Object.keys(nextProjects).length} projects (${matched.length} matching) as already seen. No alerts sent.`,
+      `${tag} Seeded ${Object.keys(nextProjects).length} projects (${matched.length} matching) as already seen. No alerts sent.`,
     );
     return;
   }
 
   if (events.length) {
-    await notifyKoop(webhookUrl, events);
-    console.log(`[koop] Sent ${events.length} alert${events.length === 1 ? '' : 's'}:`);
+    await notifyProjects(webhookUrl, events, kind);
+    console.log(`${tag} Sent ${events.length} alert${events.length === 1 ? '' : 's'}:`);
     for (const event of events) console.log(describeEvent(event));
   } else {
-    console.log('[koop] Nothing new.');
+    console.log(`${tag} Nothing new.`);
   }
 
   await writeJson(storePath, nextStore);
+}
+
+/** The koop channel: nieuwbouw.nl koopprojecten plus DĀK koop. */
+export function runKoop({ config, dakKoop, ...rest }) {
+  return runProjects({ kind: 'koop', label: 'koop', config, extraItems: dakKoop.map(fromDak), ...rest });
 }
