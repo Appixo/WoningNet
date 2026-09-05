@@ -1,1 +1,39 @@
-{ "checkedAt": null, "projects": {} }
+{
+  "checkedAt": "2026-09-05T10:50:06.335Z",
+  "projects": {
+    "01KPT6NYC2GT5QH38X0020M59F": {
+      "name": "Huren in Cartesius",
+      "place": "Utrecht",
+      "status": "Beschikbaar",
+      "minPrice": 2220,
+      "maxPrice": 2980,
+      "url": "https://nieuwbouw.nl/aanbod/huur/utrecht/01KPT6NYC2GT5QH38X0020M59F-huren-in-cartesius",
+      "detail": null,
+      "firstSeenAt": "2026-09-05T10:50:06.335Z",
+      "lastSeenAt": "2026-09-05T10:50:06.335Z"
+    },
+    "01H963AX8QB7RST9BZJJE7FA7M": {
+      "name": "Brennerbaan",
+      "place": "Utrecht",
+      "status": "Bouw gestart",
+      "minPrice": null,
+      "maxPrice": null,
+      "url": "https://nieuwbouw.nl/aanbod/huur/utrecht/01H963AX8QB7RST9BZJJE7FA7M-brennerbaan",
+      "detail": {
+        "lat": 52.0668279,
+        "lon": 5.1409578,
+        "minPrice": null,
+        "maxPrice": null,
+        "developer": "AM",
+        "dates": {
+          "voorverkoop": "",
+          "startVerkoop": "",
+          "startBouw": "30 jun. 2026",
+          "oplevering": "Q2 2027"
+        }
+      },
+      "firstSeenAt": "2026-09-05T10:50:06.335Z",
+      "lastSeenAt": "2026-09-05T10:50:06.335Z"
+    }
+  }
+}
