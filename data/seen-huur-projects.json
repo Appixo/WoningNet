@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-06T14:22:54.035Z",
+  "checkedAt": "2026-09-06T17:11:28.208Z",
   "projects": {
     "01KPT6NYC2GT5QH38X0020M59F": {
       "name": "Huren in Cartesius",
@@ -10,7 +10,7 @@
       "url": "https://nieuwbouw.nl/aanbod/huur/utrecht/01KPT6NYC2GT5QH38X0020M59F-huren-in-cartesius",
       "detail": null,
       "firstSeenAt": "2026-09-05T10:50:06.335Z",
-      "lastSeenAt": "2026-09-06T14:22:54.035Z"
+      "lastSeenAt": "2026-09-06T17:11:28.208Z"
     },
     "01H963AX8QB7RST9BZJJE7FA7M": {
       "name": "Brennerbaan",
@@ -33,7 +33,7 @@
         }
       },
       "firstSeenAt": "2026-09-05T10:50:06.335Z",
-      "lastSeenAt": "2026-09-06T14:22:54.035Z"
+      "lastSeenAt": "2026-09-06T17:11:28.208Z"
     }
   }
 }
